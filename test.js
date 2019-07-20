@@ -1,6 +1,6 @@
 // Import the mount() method from the test utils
 // and the component you want to test
-import { mount } from '@vue/test-utils'
+import { mount,shallowMount } from '@vue/test-utils'
 import Counter from './counter'
 
 describe('Counter', () => {
@@ -10,7 +10,8 @@ describe('Counter', () => {
 	 * 用mount包裹组件 
 	 * 被挂载的组件会返回到一个包裹器内，而包裹器会暴露很多封装、遍历和查询其内部的 Vue 组件实例的便捷的方法。
 	 */
-  const wrapper = mount(Counter)
+  // const wrapper = mount(Counter)
+  const wrapper = shallowMount(Counter)
 
   it('renders the correct markup', () => {
     expect(wrapper.html()).toContain('<span class="count">1</span>')
@@ -24,7 +25,7 @@ describe('Counter', () => {
 
   it('button should increment the count', () => {
     expect(wrapper.vm.count).toBe(1)
-		const button = wrapper.find('button')
+		const button = wrapper.find('.button')
 		// 点击一下button  vm.count+1
     button.trigger('click')
     expect(wrapper.vm.count).toBe(2)

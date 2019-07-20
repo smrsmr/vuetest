@@ -4,7 +4,7 @@ export default {
   template: `
     <div>
       <span class="count">{{ count }}</span>
-      <button @click="increment">Increment</button>
+      <button @click="increment" class="button">Increment</button>
     </div>
   `,
 
